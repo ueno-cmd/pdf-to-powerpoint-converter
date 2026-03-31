@@ -259,7 +259,7 @@ export default function App() {
                           </p>
                         )}
                         <div className="space-y-1">
-                          {analysisResult.pages.map((p) => (
+                          {analysisResult.pages.map((p: { page: number; charCount: number }) => (
                             <div key={p.page} className="flex justify-between text-sm text-[#8e8e8e]">
                               <span>ページ {p.page}</span>
                               <span>{p.charCount} 文字</span>
