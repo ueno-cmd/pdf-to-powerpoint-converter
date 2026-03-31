@@ -11,7 +11,7 @@ import {
   Presentation
 } from 'lucide-react';
 import { convertPdfToPptx, ConversionProgress } from './lib/converter';
-import { analyzePdf, PdfAnalysisResult } from './lib/analyzer';
+import { analyzePdf, PdfAnalysisResult, PageTextInfo } from './lib/analyzer';
 import { cn } from './lib/utils';
 
 export default function App() {
@@ -30,6 +30,7 @@ export default function App() {
       setFile(selectedFile);
       setError(null);
       setResultBlob(null);
+      setAnalysisResult(null);
     } else if (selectedFile) {
       setError('Please select a valid PDF file.');
     }
@@ -42,6 +43,7 @@ export default function App() {
       setFile(droppedFile);
       setError(null);
       setResultBlob(null);
+      setAnalysisResult(null);
     } else if (droppedFile) {
       setError('Please drop a valid PDF file.');
     }
@@ -259,7 +261,7 @@ export default function App() {
                           </p>
                         )}
                         <div className="space-y-1">
-                          {analysisResult.pages.map((p: { page: number; charCount: number }) => (
+                          {analysisResult.pages.map((p: PageTextInfo) => (
                             <div key={p.page} className="flex justify-between text-sm text-[#8e8e8e]">
                               <span>ページ {p.page}</span>
                               <span>{p.charCount} 文字</span>
