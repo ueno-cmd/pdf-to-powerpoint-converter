@@ -3,3 +3,5 @@ dist/
 .env.local
 .env
 sample_pdf/
+CLAUDE.md
+metadata.json
